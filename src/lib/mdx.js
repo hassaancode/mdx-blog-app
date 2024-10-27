@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const POSTS_PATH = path.join(process.cwd(), "src/content/posts");
+const POSTS_PATH = path.join(process.cwd(), "../content/posts");
 
 export async function getAllPosts() {
   const files = fs.readdirSync(POSTS_PATH);
@@ -20,7 +20,9 @@ export async function getAllPosts() {
     };
   });
 
-  return posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+  return posts.sort(
+    (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
+  );
 }
 
 export async function getPostBySlug(slug) {

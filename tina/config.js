@@ -7,8 +7,8 @@ const branch =
   "main";
 
 export default defineConfig({
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   branch,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
   build: {
@@ -40,22 +40,6 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
-          },
-        ],
-        ui: {
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
-      },
-      {
-        name: "mdx",
-        label: "MDX Files",
-        path: "src/content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
             required: true,
           },
           {
@@ -68,31 +52,31 @@ export default defineConfig({
             type: "string",
             name: "excerpt",
             label: "Excerpt",
+            required: false,
           },
           {
             type: "string",
             name: "thumbnail",
             label: "Thumbnail",
+            required: false,
           },
           {
             type: "string",
             name: "author",
             label: "Author",
+            required: true,
           },
           {
             type: "number",
             name: "readTime",
             label: "Read Time (minutes)",
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
+            required: false,
           },
         ],
+        ui: {
+          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        },
       },
     ],
   },
 });
-
