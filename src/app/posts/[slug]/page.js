@@ -1,9 +1,7 @@
 import MDXContent from "@/components/MDXContent";
-import styles from "./page.module.css";
+import styles from "./styles.module.css";
 import { getPostBySlug, getAllPosts } from "@/lib/mdx";
-import { getMDXComponent } from "mdx-bundler/client";
 import Image from "next/image";
-import { useMemo } from "react";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -17,15 +15,19 @@ export default async function BlogPost({ params }) {
   const { frontmatter, code } = await getPostBySlug(resolvedParams.slug);
 
   return (
-    <article className="prose lg:prose-xl mx-auto">
-      <Image
-        src={frontmatter.thumbnail}
-        alt={frontmatter.title}
-        width={300}
-        height={300}
-      />
+    <article className={`prose lg:prose-xl mx-auto ${styles.article}`}>
+      {frontmatter.thumbnail && (
+        <Image
+          src={frontmatter.thumbnail}
+          alt={frontmatter.title}
+          width={300}
+          height={300}
+        />
+      )}
       <h1>{frontmatter.title}</h1>
-      <div className="text-gray-500 mb-8">Posted on {frontmatter.date}</div>
+      <div className="text-gray-500 mb-8">
+        Posted on {new Date(frontmatter.date).toLocaleDateString()}
+      </div>
       <MDXContent code={code} />
     </article>
   );

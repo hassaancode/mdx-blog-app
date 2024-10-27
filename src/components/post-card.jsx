@@ -1,4 +1,5 @@
 
+
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
@@ -12,7 +13,7 @@ export default function PostCard({ post }) {
           <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
-              <span>{post.frontmatter.date}</span>
+              <span>{new Date(post.frontmatter.date).toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
@@ -37,13 +38,15 @@ export default function PostCard({ post }) {
           </Link>
         </div>
 
-        <Image
-          className="rounded-lg object-cover"
-          src={post.frontmatter.thumbnail}
-          width={150}
-          height={150}
-          alt={post.frontmatter.title}
-        />
+        {post.frontmatter.thumbnail && (
+          <Image
+            className="rounded-lg object-cover"
+            src={post.frontmatter.thumbnail}
+            width={150}
+            height={150}
+            alt={post.frontmatter.title}
+          />
+        )}
       </CardContent>
     </Card>
   );

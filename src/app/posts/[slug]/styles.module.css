@@ -1,11 +1,8 @@
-article {
+.article {
     @apply prose lg:prose-xl mx-auto;
   }
   
-h1 {
-    @apply text-3xl font-bold;
-  }
   
- p {
+  .article p {
     @apply text-base;
   }

@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { getAllPosts } from "@/lib/mdx";
-import Image from "next/image";
 import PostCard from "@/components/post-card";
 export default async function Home() {
   const posts = await getAllPosts();

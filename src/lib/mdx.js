@@ -1,15 +1,14 @@
-import { bundleMDX } from "mdx-bundler";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const POSTS_PATH = path.join(process.cwd(), "./content/posts");
+const POSTS_PATH = path.join(process.cwd(), "src/content/posts");
 
 export async function getAllPosts() {
   const files = fs.readdirSync(POSTS_PATH);
 
   const posts = files.map((fileName) => {
-    const slug = fileName.replace(".mdx", "");
+    const slug = fileName.replace(".md", "");
     const filePath = path.join(POSTS_PATH, fileName);
     const source = fs.readFileSync(filePath, "utf8");
     const { data: frontmatter } = matter(source);
@@ -26,16 +25,12 @@ export async function getAllPosts() {
 }
 
 export async function getPostBySlug(slug) {
-  const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
+  const postFilePath = path.join(POSTS_PATH, `${slug}.md`);
   const source = fs.readFileSync(postFilePath, "utf8");
-
-  const { code, frontmatter } = await bundleMDX({
-    source,
-    cwd: POSTS_PATH,
-  });
+  const { content, data: frontmatter } = matter(source);
 
   return {
     frontmatter,
-    code,
+    code: content,
   };
 }

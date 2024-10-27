@@ -24,22 +24,15 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
+        name: "Posts",
         label: "Posts",
-        path: "content/posts",
+        path: "src/content/posts",
         fields: [
           {
             type: "string",
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
             required: true,
           },
           {
@@ -52,30 +45,29 @@ export default defineConfig({
             type: "string",
             name: "excerpt",
             label: "Excerpt",
-            required: false,
           },
           {
             type: "string",
             name: "thumbnail",
             label: "Thumbnail",
-            required: false,
           },
           {
             type: "string",
             name: "author",
             label: "Author",
-            required: true,
           },
           {
             type: "number",
             name: "readTime",
             label: "Read Time (minutes)",
-            required: false,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
           },
         ],
-        ui: {
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
       },
     ],
   },
