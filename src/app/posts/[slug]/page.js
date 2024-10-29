@@ -15,14 +15,17 @@ export default async function BlogPost({ params }) {
   const { frontmatter, code } = await getPostBySlug(resolvedParams.slug);
 
   return (
-    <article className={`prose lg:prose-xl mx-auto ${styles.article}`}>
+    <article className={`prose lg:prose-xl mx-auto px-4 md:px-0`}>
       {frontmatter.thumbnail && (
-        <Image
-          src={frontmatter.thumbnail}
-          alt={frontmatter.title}
-          width={300}
-          height={300}
-        />
+        <div>
+          <Image
+            className="rounded-xl w-full object-cover aspect-video"
+            src={frontmatter.thumbnail}
+            alt={frontmatter.title}
+            width={1000}
+            height={1000}
+          />
+        </div>
       )}
       <h1>{frontmatter.title}</h1>
       <div className="text-gray-500 mb-8">
