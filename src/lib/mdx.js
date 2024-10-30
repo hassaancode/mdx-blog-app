@@ -25,7 +25,7 @@ export async function getAllPosts() {
 }
 
 export async function getPostBySlug(slug) {
-  const postFilePath = path.join(POSTS_PATH, `${slug.toLowerCase()}.md`);
+  const postFilePath = path.join(POSTS_PATH, `${slug}.md`);
   const source = fs.readFileSync(postFilePath, "utf8");
   const { content, data: frontmatter } = matter(source);
 
