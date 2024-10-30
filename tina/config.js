@@ -26,7 +26,7 @@ export default defineConfig({
       {
         name: "Posts",
         label: "Posts",
-        path: "src/content/posts",
+        path: "content/posts",
         fields: [
           {
             type: "string",
@@ -60,6 +60,7 @@ export default defineConfig({
             type: "number",
             name: "readTime",
             label: "Read Time (minutes)",
+            required: true,
           },
           {
             type: "rich-text",
