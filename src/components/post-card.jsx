@@ -35,7 +35,7 @@ export default function PostCard({ post }) {
           <div className="flex justify-between items-center space-x-4">
             <div>
               <h2 className="text-xl md:text-2xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
-                {post.frontmatter.title}
+                {truncateText(post.frontmatter.title, 8)}
               </h2>
               <p className="text-gray-600 text-sm sm:text-base mb-4">
                 {truncateText(post.frontmatter.excerpt, 20)}
