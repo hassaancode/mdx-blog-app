@@ -47,7 +47,7 @@ export default defineConfig({
             label: "Excerpt",
           },
           {
-            type: "string",
+            type: "image",
             name: "thumbnail",
             label: "Thumbnail",
           },

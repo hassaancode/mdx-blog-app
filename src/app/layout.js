@@ -4,7 +4,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Modern MDX Blog",
+  title: "Modern MDX Blogger",
   description: "A blog built with Next.js 15 and MDX",
 };
 

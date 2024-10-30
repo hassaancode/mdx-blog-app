@@ -5,12 +5,15 @@ import Image from "next/image";
 
 // Function to truncate text
 function truncateText(text, length) {
-  return text.length > length ? `${text.slice(0, length)}...` : text;
+  const words = text.split(" ");
+  return words.length > length
+    ? `${words.slice(0, length).join(" ")}...`
+    : text;
 }
 
 export default function PostCard({ post }) {
   return (
-    <Link href={`/posts/${post.slug}`}>
+    <Link className="group" href={`/posts/${post.slug}`}>
       <Card className="mb-6 hover:shadow-lg transition-shadow">
         <CardContent className="p-6 flex flex-col  ">
           <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
@@ -34,8 +37,8 @@ export default function PostCard({ post }) {
               <h2 className="text-xl md:text-2xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
                 {post.frontmatter.title}
               </h2>
-              <p className="text-gray-600 mb-4">
-                {truncateText(post.frontmatter.excerpt, 70)}
+              <p className="text-gray-600 text-sm sm:text-base mb-4">
+                {truncateText(post.frontmatter.excerpt, 20)}
               </p>
               <p className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors">
                 Read More <ArrowRight className="w-4 h-4" />
@@ -44,7 +47,7 @@ export default function PostCard({ post }) {
             <div>
               {post.frontmatter.thumbnail ? (
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-lg object-cover group-hover:scale-105 transition-transform max-w-[120px] sm:max-w-[150px] min-w-[100px] aspect-square "
                   src={post.frontmatter.thumbnail}
                   width={150}
                   height={150}
