@@ -8,7 +8,7 @@ export async function getAllPosts() {
   const files = fs.readdirSync(POSTS_PATH);
 
   const posts = files.map((fileName) => {
-    const slug = fileName.replace(".md", "").toLowerCase();
+    const slug = fileName.replace(".md", "");
     const filePath = path.join(POSTS_PATH, fileName);
     const source = fs.readFileSync(filePath, "utf8");
     const { data: frontmatter } = matter(source);
