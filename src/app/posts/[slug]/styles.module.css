@@ -1,8 +1,12 @@
 .article {
-    @apply prose lg:prose-xl mx-auto;
-  }
-  
-  
-  .article p {
-    @apply text-base;
-  }
+  @apply prose ;
+}
+
+.article img {
+  @apply rounded-xl w-full object-cover aspect-video 
+}
+
+
+.article iframe {
+  @apply w-full aspect-video rounded-xl;
+}

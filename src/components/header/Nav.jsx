@@ -1,20 +1,19 @@
 import { CircleChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-
-const Nav = () => {
+import { House } from "lucide-react";
+const Nav = ({}) => {
   return (
-    <header>
-      <nav>
-        <Link
-          className="flex gap-2 items-center text-slate-600 p-2 bg-slate-100 rounded-lg w-fit"
-          href="/"
-        >
-          <CircleChevronLeft />
-          Back
-        </Link>
-      </nav>
-    </header>
+    <nav className=" flex gap-2 justify-between items-center  [&_a]:p-2  [&_a]:rounded-md [&_a]:text-slate-700 hover:[&_a]:text-blue-600 [&_a]:transition-all">
+      <Link href="/" className="">
+        <House />
+      </Link>
+      <div className="flex gap-4 ">
+        <Link href="/projects">Projects</Link>
+        <Link href="/posts">Blog</Link>
+        <Link href="/contact">Contact</Link>
+      </div>
+    </nav>
   );
 };
 

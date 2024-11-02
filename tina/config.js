@@ -1,5 +1,6 @@
 import { defineConfig } from "tinacms";
-
+import { posts } from "./collections/posts";
+import { projects } from "./collections/projects";
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
@@ -22,54 +23,6 @@ export default defineConfig({
     },
   },
   schema: {
-    collections: [
-      {
-        name: "Posts",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "datetime",
-            name: "date",
-            label: "Date",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "excerpt",
-            label: "Excerpt",
-          },
-          {
-            type: "image",
-            name: "thumbnail",
-            label: "Thumbnail",
-          },
-          {
-            type: "string",
-            name: "author",
-            label: "Author",
-          },
-          {
-            type: "number",
-            name: "readTime",
-            label: "Read Time (minutes)",
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-    ],
+    collections: [posts, projects],
   },
 });

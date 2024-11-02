@@ -1,4 +1,4 @@
-"use client"; // This makes the component a client component
+"use client";
 import { X } from "lucide-react";
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
@@ -8,7 +8,7 @@ export default function Search() {
   const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`?search=${query}`); // Use router to navigate
+    router.push(`?search=${query}`); 
   };
 
   const handleClear = () => {
@@ -27,7 +27,8 @@ export default function Search() {
         onChange={(e) => setQuery(e.target.value)}
         className="outline-none bg-inherit w-full"
       />
-      {/* Add a button to clear the search query */}
+     
+     
       {query && (
         <button
           className="text-slate-600 p-1 hover:bg-slate-300 rounded-full"

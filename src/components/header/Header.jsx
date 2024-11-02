@@ -1,8 +1,11 @@
+import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <div>Header</div>
-  )
-}
+    <header className="max-w-[1024px] m-auto p-4">
+      <Nav />
+    </header>
+  );
+};
 
-export default Header
+export default Header;
