@@ -2,6 +2,7 @@ import RouterButton from "@/components/RouterButton";
 import { client } from "../../../tina/__generated__/client";
 import { Folder, Rss } from "lucide-react";
 import PostCard from "@/components/PostCard";
+import { metadata } from "../layout";
 
 const ProjectsPage = async () => {
   const postsResponse = await client.queries.projectConnection();
@@ -19,9 +20,9 @@ const ProjectsPage = async () => {
           <h1 className="text-2xl font-bold ">Projects</h1>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((post) => (
-          <PostCard key={post.id} post={post} />
+          <PostCard key={post.id} post={post} projects />
         ))}
       </div>
     </section>
@@ -29,3 +30,10 @@ const ProjectsPage = async () => {
 };
 
 export default ProjectsPage;
+
+export async function generateMetadata() {
+  return {
+    title: "Hassaan Ali - Projects",
+    description: "Projects page for Hassaan Ali",
+  };
+}

@@ -7,7 +7,7 @@ import { CircleChevronLeft } from "lucide-react";
 
 export default async function BlogPost({ params }) {
   const resolvedParams = await params;
-  const post = await client.queries.post({
+  const post = await client.queries.project({
     relativePath: `${resolvedParams.slug}.mdx`,
   });
 
@@ -24,23 +24,26 @@ export default async function BlogPost({ params }) {
         <article className={`${styles.article} mt-10`}>
           <header>
             <h1 className="text-5xl font-bold leading-[1.2]">
-              {post.data.post.title}
+              {post.data.project.title}
             </h1>
             <p className="text-gray-500 mt-3">
               Posted on{" "}
-              {new Date(post.data.post.date).toLocaleString("en-US", {
+              {new Date(post.data.project.date).toLocaleString("en-US", {
                 month: "long",
                 day: "numeric",
                 year: "numeric",
               })}
             </p>
-            <p className="italic font-medium p-0"> {post.data.post.excerpt}</p>
+            <p className="italic font-medium p-0">
+              {" "}
+              {post.data.project.excerpt}
+            </p>
           </header>
-          {post.data.post.thumbnail && (
+          {post.data.project.thumbnail && (
             <div>
               <Image
-                src={post.data.post.thumbnail}
-                alt={post.data.post.title}
+                src={post.data.project.thumbnail}
+                alt={post.data.project.title}
                 width={1000}
                 height={1000}
               />
@@ -49,7 +52,7 @@ export default async function BlogPost({ params }) {
 
           {/* MARKDOWN */}
           <div id="content" className={`${styles.iframe}`}>
-            <TinaMarkdownComponent content={post.data.post.body} />
+            <TinaMarkdownComponent content={post.data.project.body} />
           </div>
         </article>
       </div>
@@ -58,21 +61,20 @@ export default async function BlogPost({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = await client.queries.postConnection();
-  return posts.data.postConnection.edges.map((edge) => ({
+  const posts = await client.queries.projectConnection();
+  return posts.data.projectConnection.edges.map((edge) => ({
     slug: edge.node._sys.filename,
   }));
 }
 
-
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
-  const post = await client.queries.post({
+  const post = await client.queries.project({
     relativePath: `${resolvedParams.slug}.mdx`,
   });
 
   return {
-    title: post.data.post.title,
-    description: post.data.post.excerpt,
+    title: post.data.project.title,
+    description: post.data.project.excerpt,
   };
 }

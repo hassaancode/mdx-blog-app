@@ -8,6 +8,7 @@ import Image from "next/image";
 import Search from "@/components/Search";
 import RouterButton from "@/components/RouterButton";
 import Link from "next/link";
+import { metadata } from "./layout";
 export default async function Home({ searchParams }) {
   const postsResponse = await client.queries.postConnection();
   const posts = postsResponse.data.postConnection.edges.map(
@@ -36,23 +37,36 @@ export default async function Home({ searchParams }) {
           alt="profile-picture"
         />
         <div className="flex flex-col lg:items-start">
-          <h2 className="text-[7vw] sm:text-4xl font-bold text-slate-800">
-            Hassaan Ali
-          </h2>
+          <h2 className="text-[7vw] sm:text-4xl font-bold ">Hassaan Ali</h2>
           <p className="text-slate-500 text-sm md:text-base">
             Designer / Developer
           </p>
-          <div id="icons" className="flex text-slate-400 gap-1 mt-3">
-            <Link href="https://github.com/hassaancode" target="_blank">
+          <div
+            id="icons"
+            className="flex text-slate-400 gap-1 mt-3 [&_a]:transition-colors"
+          >
+            <Link
+              className="hover:text-gray-500"
+              href="https://github.com/hassaancode"
+              target="_blank"
+              title="Github"
+            >
               <IoLogoGithub size={24} />
             </Link>
             <Link
+              className="hover:text-blue-500"
               href="https://www.linkedin.com/in/hassaanvfx/"
               target="_blank"
+              title="Linkedin"
             >
               <FaLinkedin size={24} />
             </Link>
-            <Link href="https://www.youtube.com/@hassaanvfx" target="_blank">
+            <Link
+              className="hover:text-red-500"
+              href="https://www.youtube.com/@hassaanvfx"
+              target="_blank"
+              title="Youtube"
+            >
               <FaYoutube size={24} />
             </Link>
           </div>
@@ -71,7 +85,7 @@ export default async function Home({ searchParams }) {
         {filteredPosts.length === 0 && (
           <div className="flex flex-col items-center text-zinc-700">
             <span>No Result Found</span>
-            <RouterButton btnText={"Go Home"} />
+            <RouterButton btnText={"Reset"} />
           </div>
         )}
         {filteredPosts.map((post) => (
@@ -80,4 +94,11 @@ export default async function Home({ searchParams }) {
       </section>
     </div>
   );
+}
+
+export async function generateMetadata() {
+  return {
+    title: "Hassaan Ali - Portfolio",
+    description: "A portfolio built with Next.js 15 and MDX",
+  };
 }
