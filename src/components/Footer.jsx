@@ -4,10 +4,10 @@ import { IoLogoGithub } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="flex items-center text-white justify-between py-5 px-4 sm:px-20 bg-zinc-900 mt-20">
+    <div className="flex items-center text-white justify-between py-10 px-4 sm:px-20 bg-slate-900 mt-20">
       <div
         id="icons"
-        className="flex text-slate-400 gap-1 [&_a]:transition-colors hover:[&_a]:scale-110"
+        className="flex text-slate-400 gap-3 [&_a]:transition-colors hover:[&_a]:scale-110"
       >
         <Link
           className="hover:text-gray-500"

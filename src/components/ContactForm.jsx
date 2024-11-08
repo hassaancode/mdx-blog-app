@@ -101,7 +101,7 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className="group bg-neutral-800 text-white px-4 py-2 rounded flex w-fit items-center gap-2 hover:bg-white hover:text-black transition-all"
+          className="group text-slate-800 bg-slate-300/35 hover:bg-slate-300 border  px-4 py-2 rounded flex w-fit items-center gap-2  transition-all"
           disabled={status === "sending"}
         >
           {status === "sending" ? (
@@ -117,3 +117,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+98-7787-7848

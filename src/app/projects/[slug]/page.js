@@ -2,9 +2,7 @@ import styles from "./styles.module.css";
 import TinaMarkdownComponent from "@/components/markdown/TinaMarkDown";
 import Image from "next/image";
 import client from "../../../../tina/__generated__/client";
-import Link from "next/link";
-import { CircleChevronLeft } from "lucide-react";
-
+import {BackButton} from "@/components/RouterButton";
 export default async function BlogPost({ params }) {
   const resolvedParams = await params;
   const post = await client.queries.project({
@@ -14,13 +12,7 @@ export default async function BlogPost({ params }) {
   return (
     <>
       <div className="mt-5 max-w-[680px] mx-auto px-4 md:px-0">
-        <Link
-          className="group flex gap-2 text-slate-600 px-3 py-2 bg-slate-100 rounded-full w-fit "
-          href="/"
-        >
-          <CircleChevronLeft className="group-hover:scale-110 transition-transform" />
-          Back
-        </Link>
+       <BackButton />
         <article className={`${styles.article} mt-10`}>
           <header>
             <h1 className="text-5xl font-bold leading-[1.2]">
@@ -78,3 +70,4 @@ export async function generateMetadata({ params }) {
     description: post.data.project.excerpt,
   };
 }
+

@@ -6,7 +6,7 @@ const Nav = ({}) => {
   return (
     <nav className=" flex gap-2 justify-between items-center  [&_a]:p-2  [&_a]:rounded-md [&_a]:text-slate-700 hover:[&_a]:text-blue-600 [&_a]:transition-all">
       <Link href="/" title="Home">
-        <House />
+        <House  />
       </Link>
       <div className="flex gap-4 ">
         <Link title="Projects" href="/projects">

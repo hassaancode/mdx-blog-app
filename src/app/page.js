@@ -6,7 +6,7 @@ import { FaYoutube } from "react-icons/fa";
 import PostCard from "@/components/PostCard";
 import Image from "next/image";
 import Search from "@/components/Search";
-import RouterButton from "@/components/RouterButton";
+import {RouterButton} from "@/components/RouterButton";
 import Link from "next/link";
 import { metadata } from "./layout";
 export default async function Home({ searchParams }) {
@@ -37,7 +37,7 @@ export default async function Home({ searchParams }) {
           alt="profile-picture"
         />
         <div className="flex flex-col lg:items-start">
-          <h2 className="text-[7vw] sm:text-4xl font-bold ">Hassaan Ali</h2>
+          <h2 className="text-[7vw] sm:text-4xl font-bold text-slate-800">Hassaan Ali</h2>
           <p className="text-slate-500 text-sm md:text-base">
             Designer / Developer
           </p>
