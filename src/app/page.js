@@ -42,7 +42,7 @@ export default async function Home({ searchParams }) {
 
   return (
     //PROFILE SECTION
-    <div className="space-y-20 mt-10 max-w-[1024px] m-auto px-4">
+    <div className="space-y-20 max-w-[1024px] m-auto px-4">
       <div className="flex lg:flex-row items-center gap-5 md:gap-10 ">
         <Image
           className="rounded-full border lg:-rotate-6 lg:hover:rotate-0 transition-transform w-[35%] sm:w-[200px] "

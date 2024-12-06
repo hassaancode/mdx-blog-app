@@ -19,8 +19,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} `}>
         <Toaster />
-        <Header />
-        <main className="min-h-[83.7vh]">{children}</main>
+        <div className="fixed top-0 m-auto w-full z-50">
+          <Header />
+        </div>
+        <main className="min-h-[83.7vh] mt-32">{children}</main>
         <Footer />
       </body>
     </html>
