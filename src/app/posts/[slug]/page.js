@@ -5,6 +5,7 @@ import client from "../../../../tina/__generated__/client";
 import Link from "next/link";
 import { BackButton } from "@/components/RouterButton";
 import { CircleChevronLeft } from "lucide-react";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default async function BlogPost({ params }) {
   const resolvedParams = await params;
@@ -47,6 +48,7 @@ export default async function BlogPost({ params }) {
             <TinaMarkdownComponent content={post.data.post.body} />
           </div>
         </article>
+          <ScrollToTop />
       </div>
     </>
   );

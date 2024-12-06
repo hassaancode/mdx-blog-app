@@ -82,7 +82,7 @@ export default function PostCard({ post, projects }) {
 const ProjectCard = ({post}) => {
   return (
     <Link className="group" href={`/projects/${post._sys.filename}`}>
-      <Card className="mb-6 overflow-hidden hover:shadow-lg transition-shadow">
+      <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
         <CardContent className="p-0 flex flex-col  ">
           <div className=" hidden items-center gap-4 text-sm text-gray-500 mb-3">
             <div className="flex items-center gap-1">
@@ -111,7 +111,7 @@ const ProjectCard = ({post}) => {
           )}
           <div className="flex justify-between items-center space-x-4">
             <div className="p-4">
-              <h2 className="text-md md:text-2xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+              <h2 className="text-md md:text-xl font-bold mb-2 text-slate-800 hover:text-blue-600 transition-colors">
                 {truncateText(post.title, 8)}
               </h2>
               <p className="text-gray-600 text-sm sm:text-base mb-4">

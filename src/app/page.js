@@ -8,22 +8,37 @@ import Image from "next/image";
 import Search from "@/components/Search";
 import {RouterButton} from "@/components/RouterButton";
 import Link from "next/link";
-import { metadata } from "./layout";
+import Pagination from "@/components/Pagination";
+
+const POSTS_PER_PAGE = 5;
+
 export default async function Home({ searchParams }) {
   const postsResponse = await client.queries.postConnection();
   const posts = postsResponse.data.postConnection.edges.map(
     (edge) => edge.node
   );
 
-  // FUNCTION TO Filter posts based on search query
+  // Get current page from search params or default to 1
   const searchParam = await searchParams;
+  const currentPage = Number(searchParam.page) || 1;
   const searchQuery = searchParam.search || "";
   const searchQueryLower = searchQuery.toLowerCase();
+
+  
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQueryLower) ||
       post.author.toLowerCase().includes(searchQueryLower)
   );
+
+  // Calculate pagination values
+  const totalPosts = filteredPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+  
+  // Get posts for current page
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
   return (
     //PROFILE SECTION
@@ -88,9 +103,16 @@ export default async function Home({ searchParams }) {
             <RouterButton btnText={"Reset"} />
           </div>
         )}
-        {filteredPosts.map((post) => (
+        {currentPosts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
+        {totalPosts > POSTS_PER_PAGE && (
+        <Pagination 
+          currentPage={currentPage}
+          totalPages={totalPages}
+          searchQuery={searchQuery}
+        />
+      )}
       </section>
     </div>
   );

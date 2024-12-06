@@ -2,7 +2,9 @@ import Search from "@/components/Search";
 import { Rss } from "lucide-react";
 import client from "../../../tina/__generated__/client";
 import PostCard from "@/components/PostCard";
+import Pagination from "@/components/Pagination";
 
+const POSTS_PER_PAGE = 5;
 
 const BlogsPage = async ({ searchParams }) => {
   const postsResponse = await client.queries.postConnection();
@@ -10,21 +12,34 @@ const BlogsPage = async ({ searchParams }) => {
     (edge) => edge.node
   );
 
-  // FUNCTION TO Filter posts based on search query
+  // Get current page from search params or default to 1
   const searchParam = await searchParams;
+  const currentPage = Number(searchParam.page) || 1;
   const searchQuery = searchParam.search || "";
   const searchQueryLower = searchQuery.toLowerCase();
+
+  // Filter posts based on search query
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQueryLower) ||
       post.author.toLowerCase().includes(searchQueryLower)
   );
+
+  // Calculate pagination values
+  const totalPosts = filteredPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+  
+  // Get posts for current page
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = filteredPosts.slice(startIndex, endIndex);
+
   return (
     <section id="blogs" className="flex flex-col max-w-[1024px] mx-auto mt-10 px-4">
       <div className="flex items-center justify-between gap-10 border-b mb-4 pb-2">
-        <div className="flex gap-2 items-center tracking-wider text-slate-800 ">
+        <div className="flex gap-2 items-center tracking-wider text-slate-800">
           <Rss size={24} />
-          <h1 className="text-2xl font-bold ">Blogs</h1>
+          <h1 className="text-2xl font-bold">Blogs</h1>
         </div>
         <Search />
       </div>
@@ -33,9 +48,17 @@ const BlogsPage = async ({ searchParams }) => {
           <span>No Result Found</span>
         </div>
       )}
-      {filteredPosts.map((post) => (
+      {currentPosts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
+      
+      {totalPosts > POSTS_PER_PAGE && (
+        <Pagination 
+          currentPage={currentPage}
+          totalPages={totalPages}
+          searchQuery={searchQuery}
+        />
+      )}
     </section>
   );
 };

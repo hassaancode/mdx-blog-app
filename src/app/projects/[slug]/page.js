@@ -3,6 +3,7 @@ import TinaMarkdownComponent from "@/components/markdown/TinaMarkDown";
 import Image from "next/image";
 import client from "../../../../tina/__generated__/client";
 import {BackButton} from "@/components/RouterButton";
+import ScrollToTop from "@/components/ScrollToTop";
 export default async function BlogPost({ params }) {
   const resolvedParams = await params;
   const post = await client.queries.project({
@@ -47,6 +48,7 @@ export default async function BlogPost({ params }) {
             <TinaMarkdownComponent content={post.data.project.body} />
           </div>
         </article>
+        <ScrollToTop/>
       </div>
     </>
   );
