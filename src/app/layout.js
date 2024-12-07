@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <div className="fixed top-0 m-auto w-full z-50">
           <Header />
         </div>
-        <main className="min-h-[83.7vh] mt-32">{children}</main>
+        <main className="min-h-[83.7vh] mt-24">{children}</main>
         <Footer />
       </body>
     </html>
