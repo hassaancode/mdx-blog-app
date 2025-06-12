@@ -16,7 +16,7 @@ export default function PostCard({ post, projects }) {
     <>
       {!projects ? (
         <Link className="group" href={`/posts/${post._sys.filename}`}>
-          <Card className="mb-6 overflow-hidden hover:shadow-lg transition-shadow">
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
             <CardContent className="p-0 sm:p-6 flex flex-col  ">
               <div className=" hidden sm:flex items-center gap-4 text-sm text-gray-500 mb-3">
                 <div className="flex items-center gap-1">
