@@ -2,21 +2,42 @@
 [![](https://img.shields.io/badge/Youtube-https%3A%2F%2Fyoutu.be%2FhBbf3h3UAfI-white?style=flat&labelColor=df2929&logo=youtube&link=https%3A%2F%2Fyoutu.be%2FhBbf3h3UAfI&link=https%3A%2F%2Fyoutu.be%2FhBbf3h3UAfI)](https://youtu.be/hBbf3h3UAfI)
 ---
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Prerequisites
+
+Before running this project, make sure you have the following installed on your machine:
+
+- Node.js (https://nodejs.org)
 
 ## Getting Started
+1. Clone the repository to your local machine:
 
-First, run the development server:
+    ```shell
+    git clone [repository URL]
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Navigate to the project directory:
+
+    ```shell
+    open folder directory
+    ```
+
+3. Install the dependencies for frontend:
+
+    ```shell    
+    npm install    
+    ```
+4. Run the development server:
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
