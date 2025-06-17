@@ -103,9 +103,11 @@ export default async function Home({ searchParams }) {
             <RouterButton btnText={"Reset"} />
           </div>
         )}
+      <div className="flex flex-col gap-4">
         {currentPosts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
+        </div>
         {totalPosts > POSTS_PER_PAGE && (
         <Pagination 
           currentPage={currentPage}
